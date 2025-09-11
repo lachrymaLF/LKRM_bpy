@@ -26,7 +26,6 @@ def ExtCurveData(curve_name):
         curve_node_mapping[curve_name] = cn.name
     return ExtNodeTree()[curve_node_mapping[curve_name]]
 KEY = 'LKRM_KeyBundle'
-ExtCurveData(KEY)
 
 def in_range(x, r):
     return r[0] <= x <= r[1]
@@ -93,6 +92,7 @@ class GRAPH_OT_lkrm_keybundle(bpy.types.Operator):
         return { 'FINISHED' }
 
     def invoke(self, context, event):
+        ExtCurveData(KEY)
         return context.window_manager.invoke_props_dialog(self, width=500)
 
     def draw(self, context):
